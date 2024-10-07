@@ -1,5 +1,6 @@
-﻿#include <stdio.h>   
+#include <stdio.h>   
 #include <math.h> 
+#include <locale.h>
 /*
 * @brief Считывает вещественное число.
 * @return Вещественное число.
@@ -7,40 +8,40 @@
 double input(void);
 /*
 * @brief Рассчитывает кол-во мегабайтов
-* @param x - кол-во байтов
+* @param bayti - кол-во байтов
 * @return Кол-во мегабайтов
 */
-double get_a1(const double x);
+double MegaBayti(const double bayti);
 /*
 * @brief Рассчитывает кол-во гигабайтов
-* @param x - кол-во байтов
+* @param bayti - кол-во байтов
 * @return Кол-во гигабайтов
 */
-double get_b1(const double x);
+double Gigabayti(const double bayti);
 /*
 * @brief вход в програsмму
 * @return 0 в случае успеха
 */
 int main(void)
 {
+	setlocale(LC_ALL, "RUSSIAN");
 	printf("введите кол-во байтов:\n");
-	double x = input();
-	printf("мегабайты= %f\n", get_a1(x));
-	printf("гигабайты= %f\n", get_b1(x));
+	double bayti = input();
+	printf("мегабайты= %f\n", MegaBayti(bayti));
+	printf("гигабайты= %f\n", Gigabayti(bayti));
 	return 0;
 }
 double input(void)
 {
 	double value = 0.0;
-	scanf("%lf", &value);
+	scanf_s("%lf", &value);
 	return value;
-
 }
-double get_a1(const double x)
+double MegaBayti(const double bayti)
 {
-	return x / 1024.0 / 1024.0;
+	return bayti / 1024.0 / 1024.0;
 }
-double get_b1(const double x)
+double Gigabayti(const double bayti)
 {
-	return x / 1024.0 / 1024.0 / 1024.0;
+	return bayti / 1024.0 / 1024.0 / 1024.0;
 }
