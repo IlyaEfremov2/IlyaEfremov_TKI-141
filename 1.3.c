@@ -1,5 +1,6 @@
-﻿#include <stdio.h>  
+#include <stdio.h>  
 #include <math.h> 
+#include <locale.h>
 /*
 * @brief Считывает вещественное число.
 * @return Вещественное число.
@@ -7,34 +8,35 @@
 double input(void);
 /*
 * @brief Рассчитывает сопротивление сети
-* @param x - сопротивление первого резистора
-* @param y - сопротивление второго резистора
-* @param z - сопротивление третьего резистора
+* @param perviy_rezistor - сопротивление первого резистора
+* @param vtoroy_resistor - сопротивление второго резистора
+* @param tretiy_resistor - сопротивление третьего резистора
 * @return Сопротивление сети
 */
-double get_a(const double x, const double y, const double z);
+double soprotivlenie(const double perviy_rezistor, const double vtoroy_resistor, const double tretiy_resistor);
 /*
 * @brief вход в програsмму
 * @return 0 в случае успеха
 */
 int main(void)
 {
+	setlocale(LC_ALL, "RUSSIAN");
 	printf("введите сопротивление первого резистора:\n");
-	double x = input();
+	double perviy_rezistor = input();
 	printf("введите сопротивление второго резистора:\n");
-	double y = input();
+	double vtoroy_resistor = input();
 	printf("введите сопротивление третьего резистора:\n");
-	double z = input();
-	printf("Cопротивление соединения= %f\n", get_a(x, y, z));
+	double tretiy_resistor = input();
+	printf("Cопротивление соединения= %f\n", soprotivlenie(perviy_rezistor, vtoroy_resistor, tretiy_resistor));
 	return 0;
 }
 double input(void)
 {
 	double value = 0.0;
-	scanf("%lf", &value);
+	scanf_s("%lf", &value);
 	return value;
 }
-double get_a(const double x, const double y, const double z)
+double soprotivlenie(const double perviy_rezistor, const double vtoroy_resistor, const double tretiy_resistor)
 {
-	return x + y + z;
+	return perviy_rezistor + vtoroy_resistor + tretiy_resistor;
 }
