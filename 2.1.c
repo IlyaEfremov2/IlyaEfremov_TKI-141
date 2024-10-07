@@ -1,7 +1,10 @@
-﻿#define _USE_MATH_DEFINES 
+#define _USE_MATH_DEFINES 
 #include <stdio.h> 
+#include <locale.h>
 #include <math.h> 
 #include <stdlib.h> 
+
+
 /**
 *@brief Проверка введенных значений.
 *@return Возвращает значение, если выполнено успешно, или ошибку, если иначе
@@ -9,51 +12,52 @@
 double input(void);
 /**
 * @brief Рассчитывает объём
-* @param x - длина
-* @param y - ширина
-* @param z - высота
+* @param dlina - длина
+* @param shirina - ширина
+* @param visota - высота
 * @return объем
 */
-double get_a1(const double x, const double y, const double z);
+double obiom(const double dlina, const double shirina, const double visota);
 /**
 * @brief Рассчитывает площадь поверхности
-* @param x - длина
-* @param y - ширина
-* @param z - высота
+* @param dlina - длина
+* @param shirina - ширина
+* @param visota - высота
 * @return площадь поверхности
 */
-double get_b1(const double x, const double y, const double z);
+double ploshad_povrxnosti(const double dlina, const double shirina, const double visota);
 /**
 * @brief Точка входа в програsмму
 * @return 0 в случае успеха
 */
 int main(void)
 {
+	setlocale(LC_ALL, "RUSSIAN");
 	printf("введите длину:\n");
-	double x = input();
+	double dlina = input();
 	printf("введите ширину:\n");
-	double y = input();
+	double shirina = input();
 	printf("введите высоту:\n");
-	double z = input();
-	printf("объем= %f\n", get_a1(x, y, z));
-	printf("площадь поверхноии= %f\n", get_b1(x, y, z));
+	double visota = input();
+	printf("объем= %f\n", obiom(dlina, shirina, visota));
+	printf("площадь поверхноии= %f\n", ploshad_povrxnosti(dlina, shirina, visota));
 	return 0;
 }
 double input(void)
 {
 	double input;
-	if (scanf("%lf", &input) != 1 || (input <= 0))
+	if (scanf_s("%lf", &input) != 1 || (input <= 0))
 	{
 		printf("input error");
 		exit(EXIT_FAILURE);
 	}
 	return input;
 }
-double get_a1(const double x, const double y, const double z)
+double obiom(const double dlina, const double shirina, const double visota)
 {
-	return x * y * z;
+	return dlina * shirina * visota;
 }
-double get_b1(const double x, const double y, const double z)
+double ploshad_povrxnosti(const double dlina, const double shirina, const double visota)
 {
-	return (x * y) * 2.0 + (x * z) * 2.0 + (y * z) * 2.0;
+	return (dlina * shirina) * 2.0 + (dlina * visota) * 2.0 + (shirina * visota) * 2.0;
 }
