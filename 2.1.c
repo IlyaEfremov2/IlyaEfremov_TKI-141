@@ -3,8 +3,6 @@
 #include <locale.h>
 #include <math.h> 
 #include <stdlib.h> 
-
-
 /**
 *@brief Проверка введенных значений.
 *@return Возвращает значение, если выполнено успешно, или ошибку, если иначе
@@ -12,20 +10,20 @@
 double input(void);
 /**
 * @brief Рассчитывает объём
-* @param dlina - длина
-* @param shirina - ширина
-* @param visota - высота
+* @param length - длина
+* @param Width - ширина
+* @param Height - высота
 * @return объем
 */
-double obiom(const double dlina, const double shirina, const double visota);
+double Volume(const double length, const double Width, const double Height);
 /**
 * @brief Рассчитывает площадь поверхности
-* @param dlina - длина
-* @param shirina - ширина
-* @param visota - высота
+* @param length - длина
+* @param Width - ширина
+* @param Height - высота
 * @return площадь поверхности
 */
-double ploshad_povrxnosti(const double dlina, const double shirina, const double visota);
+double Surface_Area(const double length, const double Width, const double Height);
 /**
 * @brief Точка входа в програsмму
 * @return 0 в случае успеха
@@ -34,13 +32,13 @@ int main(void)
 {
 	setlocale(LC_ALL, "RUSSIAN");
 	printf("введите длину:\n");
-	double dlina = input();
+	double length = input();
 	printf("введите ширину:\n");
-	double shirina = input();
+	double Width = input();
 	printf("введите высоту:\n");
-	double visota = input();
-	printf("объем= %f\n", obiom(dlina, shirina, visota));
-	printf("площадь поверхноии= %f\n", ploshad_povrxnosti(dlina, shirina, visota));
+	double Height = input();
+	printf("объем= %f\n", Volume(length, Width, Height));
+	printf("площадь поверхноии= %f\n", Surface_Area(length, Width, Height));
 	return 0;
 }
 double input(void)
@@ -53,11 +51,11 @@ double input(void)
 	}
 	return input;
 }
-double obiom(const double dlina, const double shirina, const double visota)
+double Volume(const double length, const double Width, const double Height)
 {
-	return dlina * shirina * visota;
+	return length * Width * Height;
 }
-double ploshad_povrxnosti(const double dlina, const double shirina, const double visota)
+double Surface_Area(const double length, const double Width, const double Height)
 {
-	return (dlina * shirina) * 2.0 + (dlina * visota) * 2.0 + (shirina * visota) * 2.0;
+	return (length * Width) * 2.0 + (length * Height) * 2.0 + (Width * Height) * 2.0;
 }
