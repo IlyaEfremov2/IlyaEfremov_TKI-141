@@ -8,16 +8,16 @@
 double input(void);
 /*
 * @brief Рассчитывает кол-во мегабайтов
-* @param bayti - кол-во байтов
+* @param bytes - кол-во байтов
 * @return Кол-во мегабайтов
 */
-double MegaBayti(const double bayti);
+double MegaBytes(const double bytes);
 /*
 * @brief Рассчитывает кол-во гигабайтов
-* @param bayti - кол-во байтов
+* @param bytes - кол-во байтов
 * @return Кол-во гигабайтов
 */
-double Gigabayti(const double bayti);
+double GigaBytes(const double bytes);
 /*
 * @brief вход в програsмму
 * @return 0 в случае успеха
@@ -26,9 +26,9 @@ int main(void)
 {
 	setlocale(LC_ALL, "RUSSIAN");
 	printf("введите кол-во байтов:\n");
-	double bayti = input();
-	printf("мегабайты= %f\n", MegaBayti(bayti));
-	printf("гигабайты= %f\n", Gigabayti(bayti));
+	double bytes = input();
+	printf("мегабайты= %f\n", MegaBytes(bytes));
+	printf("гигабайты= %f\n", GigaBytes(bytes));
 	return 0;
 }
 double input(void)
@@ -37,11 +37,11 @@ double input(void)
 	scanf_s("%lf", &value);
 	return value;
 }
-double MegaBayti(const double bayti)
+double MegaBytes(const double bytes)
 {
-	return bayti / 1024.0 / 1024.0;
+	return bytes / pow(1024.0,2.0);
 }
-double Gigabayti(const double bayti)
+double GigaBytes(const double bytes)
 {
-	return bayti / 1024.0 / 1024.0 / 1024.0;
+	return bytes / pow(1024.0,3.0);
 }
