@@ -1,8 +1,8 @@
-#define _USE_MATH_DEFINES 
 #include <stdio.h> 
 #include <locale.h>
 #include <math.h> 
 #include <stdlib.h> 
+#include <errno.h> 
 /**
 *@brief Проверка введенных значений.
 *@return Возвращает значение, если выполнено успешно, или ошибку, если иначе
@@ -31,11 +31,11 @@ double Surface_Area(const double length, const double Width, const double Height
 int main(void)
 {
 	setlocale(LC_ALL, "RUSSIAN");
-	printf("введите длину:\n");
+	puts("введите длину:");
 	double length = input();
-	printf("введите ширину:\n");
+	puts("введите ширину:");
 	double Width = input();
-	printf("введите высоту:\n");
+	puts("введите высоту:");
 	double Height = input();
 	printf("объем= %f\n", Volume(length, Width, Height));
 	printf("площадь поверхноии= %f\n", Surface_Area(length, Width, Height));
@@ -43,13 +43,15 @@ int main(void)
 }
 double input(void)
 {
-	double input;
-	if (scanf_s("%lf", &input) != 1 || (input <= 0))
+	double value = 0.0;
+	int result = scanf("%lf", &value);
+	if (result <= 0)
 	{
+	    errno = EIO;
 		printf("input error");
 		exit(EXIT_FAILURE);
 	}
-	return input;
+	return value;
 }
 double Volume(const double length, const double Width, const double Height)
 {
