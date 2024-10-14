@@ -51,7 +51,16 @@ double input(void)
 		printf("input error");
 		exit(EXIT_FAILURE);
 	}
-	return value;
+	if (value <= 0)
+	{
+        errno = EIO;
+		printf("input error");
+		exit(EXIT_FAILURE); 
+	 }
+	 else
+	 {
+	     return value;
+	 }
 }
 double Volume(const double length, const double Width, const double Height)
 {
