@@ -3,8 +3,22 @@
 #include <locale.h>
 #include <errno.h>
 #include <stdlib.h>
+/**
+*@brief Проверка введенных значений.
+*@return Возвращает значение, если выполнено успешно, или ошибку, если иначе
+*/
 double input(void);
+/**
+* @brief Рассчитывает значение функции
+* @param a - константное значение
+* @param x - вводимое значение
+* @return Значение функции
+*/
 double get_function(const double a, const double x);
+/**
+* @brief Точка входа в програsмму
+* @return 0 в случае успеха
+*/
 int main(void)
 {
 	setlocale(LC_ALL, "Russian");
