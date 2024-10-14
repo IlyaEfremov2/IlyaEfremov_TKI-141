@@ -45,7 +45,7 @@ double input(void)
 {
 	double value = 0.0;
 	int result = scanf("%lf", &value);
-	if (result <= 0)
+	if (result != 1)
 	{
 	    errno = EIO;
 		printf("input error");
