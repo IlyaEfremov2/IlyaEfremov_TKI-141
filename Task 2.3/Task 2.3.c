@@ -1,51 +1,51 @@
-
+п»ї
 #include <stdio.h>
 #include <math.h>
 #include <locale.h>
 #include <errno.h>
 #include <stdlib.h> 
 /**
-*@brief Проверка введенных значений.
-*@return Возвращает значение, если выполнено успешно, или ошибку, если иначе
+*@brief РџСЂРѕРІРµСЂРєР° РІРІРµРґРµРЅРЅС‹С… Р·РЅР°С‡РµРЅРёР№.
+*@return Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ, РµСЃР»Рё РІС‹РїРѕР»РЅРµРЅРѕ СѓСЃРїРµС€РЅРѕ, РёР»Рё РѕС€РёР±РєСѓ, РµСЃР»Рё РёРЅР°С‡Рµ
 */
 double input(void);
 /**
-* @brief Выводит какое сейчас время суток
-* @param hours - количество часов
-* @param minutes - количество минут
-* @return время суток
+* @brief Р’С‹РІРѕРґРёС‚ РєР°РєРѕРµ СЃРµР№С‡Р°СЃ РІСЂРµРјСЏ СЃСѓС‚РѕРє
+* @param hours - РєРѕР»РёС‡РµСЃС‚РІРѕ С‡Р°СЃРѕРІ
+* @param minutes - РєРѕР»РёС‡РµСЃС‚РІРѕ РјРёРЅСѓС‚
+* @return РІСЂРµРјСЏ СЃСѓС‚РѕРє
 */
 double get_function(const double hours, const double minutes);
 /**
-* @brief Точка входа в програsмму
-* @return 0 в случае успеха
+* @brief РўРѕС‡РєР° РІС…РѕРґР° РІ РїСЂРѕРіСЂР°sРјРјСѓ
+* @return 0 РІ СЃР»СѓС‡Р°Рµ СѓСЃРїРµС…Р°
 */
 int main(void)
 {
 	setlocale(LC_ALL, "Russian");
-	puts("Сколько сейчас часов:");
+	puts("РЎРєРѕР»СЊРєРѕ СЃРµР№С‡Р°СЃ С‡Р°СЃРѕРІ:");
 	double hours = input();
-	puts("Сколько сейчас минутой:");
+	puts("РЎРєРѕР»СЊРєРѕ СЃРµР№С‡Р°СЃ РјРёРЅСѓС‚РѕР№:");
 	double minutes = input();
 	if (get_function(hours, minutes) == 1.0)
 	{
-		printf("Доброй ночи");
+		printf("Р”РѕР±СЂРѕР№ РЅРѕС‡Рё");
 	}
 	if (get_function(hours, minutes) == 2.0)
 	{
-		printf("Доброе утро");
+		printf("Р”РѕР±СЂРѕРµ СѓС‚СЂРѕ");
 	}
 	if (get_function(hours, minutes) == 3.0)
 	{
-		printf("Доброе день");
+		printf("Р”РѕР±СЂРѕРµ РґРµРЅСЊ");
 	}
 	if (get_function(hours, minutes) == 4.0)
 	{
-		printf("Доброе вечер");
+		printf("Р”РѕР±СЂРѕРµ РІРµС‡РµСЂ");
 	}
 	if (get_function(hours, minutes) == 5.0)
 	{
-		printf("Невозможное время");
+		printf("РќРµРІРѕР·РјРѕР¶РЅРѕРµ РІСЂРµРјСЏ");
 	}
 	return 0;
 }
@@ -56,7 +56,7 @@ double input(void)
 	if (result != 1)
 	{
 		errno = EIO;
-		perror("Не удается посчитать значение");
+		perror("РќРµ СѓРґР°РµС‚СЃСЏ РїРѕСЃС‡РёС‚Р°С‚СЊ Р·РЅР°С‡РµРЅРёРµ");
 		exit(EXIT_FAILURE);
 	}
 	return value;
