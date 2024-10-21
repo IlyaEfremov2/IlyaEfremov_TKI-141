@@ -8,7 +8,7 @@
 *@brief Проверка на то, чтобы конец отрезка был меньше начала
 *@return Продолжает решение, если выполнено успешно, или ошибку, если иначе
 */
-double examination(const double x_start, const double x_finish);
+double examination(const double x_start, const double x_finish, const double x_step);
 /**
 *@brief Проверка введенных значений.
 *@return Возвращает значение, если выполнено успешно, или ошибку, если иначе
@@ -32,13 +32,14 @@ int main(void)
 	double x_start = input();
 	puts("Конечное значение:");
 	double x_finish = input();
-	const double x_step = 0.1;
-	if ((examination(x_start, x_finish)) == 1)
+	puts("Шаг:");
+	double x_step = input();
+	if ((examination(x_start, x_finish,x_step)) == 1)
 	{
 		perror("Конечное значение не может быть больше начального");
 		exit(EXIT_FAILURE);
 	}
-	if ((examination(x_start, x_finish)) == 0)
+	if ((examination(x_start, x_finish, x_step)) == 0)
 	{ 
 		while (x_start <= (x_finish))
 		{
@@ -65,10 +66,9 @@ double get_function(const double x_start, const double x_finish)
 {
 	return (0.1 * pow(x_start, 2) - x_start*log(x_start)) ;
 }
-double examination(const double x_start, const double x_finish)
+double examination(const double x_start, const double x_finish,const double x_step)
 {
-	const double x_step = 0.1;
-	if (x_finish>x_start+x_step)
+	if (x_finish>=x_start+x_step)
 	{
 		return 0;
 	}
