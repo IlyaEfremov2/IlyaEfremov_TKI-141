@@ -1,5 +1,4 @@
-﻿
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <math.h>
 #include <locale.h>
 #include <errno.h>
@@ -27,23 +26,23 @@ int main(void)
 	double hours = input();
 	puts("Сколько сейчас минутой:");
 	double minutes = input();
-	if (get_function(hours, minutes) == 1.0)
+	if (get_function(hours, minutes) == 1)
 	{
 		printf("Доброй ночи");
 	}
-	if (get_function(hours, minutes) == 2.0)
+	if (get_function(hours, minutes) == 2)
 	{
 		printf("Доброе утро");
 	}
-	if (get_function(hours, minutes) == 3.0)
+	if (get_function(hours, minutes) == 3)
 	{
 		printf("Доброе день");
 	}
-	if (get_function(hours, minutes) == 4.0)
+	if (get_function(hours, minutes) == 4)
 	{
 		printf("Доброе вечер");
 	}
-	if (get_function(hours, minutes) == 5.0)
+	if (get_function(hours, minutes) == 5)
 	{
 		printf("Невозможное время");
 	}
@@ -66,25 +65,20 @@ double get_function(const double hours, const double minutes)
 	double value = 0.0;
 	if (((hours >= 0) && (hours < 6)) && ((minutes >= 0) && (minutes < 60)))
 	{
-		value += 1.0;
-		return value;
+		return 1;
 	}
 	if (((hours >= 6) && (hours < 12)) && ((minutes >= 0) && (minutes < 60)))
 	{
-		value += 2.0;
-		return value;
+		return 2;
 	}
 	if (((hours >= 12) && (hours < 18)) && ((minutes >= 0) && (minutes < 60)))
 	{
-		value += 3.0;
-		return value;
+		return 3;
 	}
 	if (((hours >= 18) && (hours < 24)) && ((minutes >= 0) && (minutes < 60)))
 	{
-		value += 4.0;
-		return value;
+		return 4;
 	}
 	else
-		value += 5.0;
-		return value;
+		return 5;
 }
