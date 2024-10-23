@@ -4,7 +4,12 @@
 #include <errno.h>
 #include <stdlib.h> 
 #include <float.h>
-double examination(const double x_start);
+#include <stdbool.h>
+/**
+*@brief Проверка введенных значений на вход по ОФФ
+* * @param x_start - начальное значение
+*@return Выводит ошибку, если не входит в ООФ, или ответ, если иначе
+*/bool examination(float x_start);
 /**
 *@brief Проверка введенных значений.
 *@return Возвращает значение, если выполнено успешно, или ошибку, если иначе
@@ -27,17 +32,18 @@ int main(void)
 	double x_finish = input();
 	puts("Шаг:");
 	double x_step = input();
-	if (examination(x_start)==1)
-	{ 
-		perror("Не входит по ООФ");
-		exit(EXIT_FAILURE);
-	}
-	else
+	while (x_start <= x_finish + DBL_EPSILON)
 	{
-		while (x_start <= x_finish + DBL_EPSILON)
+		if (examination(x_start))
 		{
 			printf("при x равном %f", x_start);
-			printf(" решение %f\n", get_function(x_start));
+			printf("решение %f\n", get_function(x_start));
+			x_start = x_start + x_step;
+		}
+		else
+		{
+			printf("при x равном %f", x_start);
+			printf("решение  отсутствует\n");
 			x_start = x_start + x_step;
 		}
 	}
@@ -59,14 +65,7 @@ double get_function(const double x_start)
 {
 	return (0.1 * pow(x_start, 2) - x_start*log(x_start)) ;
 }
-double examination(const double x_start)
+bool examination(float x_start)
 {
-	if (x_start <= 0)
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
+	return x_start > 0;
 }
