@@ -32,7 +32,7 @@ int main()
  {
   printf("Добрый день");
  }
- else
+ else if (((hours >= 18) && (hours < 24)) && ((minutes >= 0) && (minutes < 60)))
  {
   printf("добрый вечер");
  }
