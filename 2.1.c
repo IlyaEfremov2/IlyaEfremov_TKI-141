@@ -8,7 +8,7 @@
 *@brief Проверка введенных значений на то, ментше ли они нуля.
 *@return Возвращает значение, если выполнено успешно, или ошибку, если иначе
 */
-double get_above_zero();
+double get_above_zero(void);
 
 /**
 *@brief Проверка введенных значений.
@@ -23,7 +23,7 @@ double input(void);
 * @param Height - высота
 * @return объем
 */
-double Volume(const double length, const double Width, const double Height);
+double volume(const double length, const double width, const double height);
 
 /**
 * @brief Рассчитывает площадь поверхности
@@ -32,7 +32,7 @@ double Volume(const double length, const double Width, const double Height);
 * @param Height - высота
 * @return площадь поверхности
 */
-double Surface_Area(const double length, const double width, const double height);
+double surface_area(const double length, const double width, const double height);
 
 /**
 * @brief Точка входа в програsмму
@@ -47,8 +47,8 @@ int main(void)
 	double width =  get_above_zero();
 	puts("введите высоту:");
 	double height =  get_above_zero();
-	printf("объем= %f\n", Volume(length, width, height));
-	printf("площадь поверхноии= %f\n", Surface_Area(length, width, height));
+	printf("объем= %f\n", volume(length, width, height));
+	printf("площадь поверхноии= %f\n", surface_area(length, width, height));
 	return 0;
 }
 double get_above_zero()
@@ -74,11 +74,11 @@ double input(void)
 	}
 	return value;
 }
-double Volume(const double length, const double width, const double height)
+double volume(const double length, const double width, const double height)
 {
 	return length * width * height;
 }
-double Surface_Area(const double length, const double width, const double height)
+double surface_area(const double length, const double width, const double height)
 {
 	return (length * width) * 2.0 + (length * height) * 2.0 + (width * height) * 2.0;
 }
