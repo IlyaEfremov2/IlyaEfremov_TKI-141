@@ -3,12 +3,15 @@
 #include <locale.h>
 #include <errno.h>
 #include <stdlib.h> 
+#include <stdbool.h>
 
 /**
 *@brief Проверка введенных значений.
 *@return Возвращает значение, если выполнено успешно, или ошибку, если иначе
 */
 double input(void);
+
+bool check_minutes(double minutes);
 
 /**
 * @brief Точка входа в програsмму
@@ -20,23 +23,39 @@ int main()
  int hours = input();
   puts("сколько минут\n");
  int minutes = input();
- if (((hours >= 0) && (hours < 6)) && ((minutes >= 0) && (minutes < 60)))
+ if (check_minutes(minutes))
  {
-  printf("Доброй ночи");
+    if (((hours >= 0) && (hours < 6)))
+
+     {
+      printf("Доброй ночи");
+     }
+     else if (((hours >= 6) && (hours < 12)))
+     {
+      printf("Доброе утро");
+     }
+     else if (((hours >= 12) && (hours < 18)))
+     {
+      printf("Добрый день");
+     }
+     else if (((hours >= 18) && (hours < 24)))
+     {
+      printf("добрый вечер");
+     }
+     else 
+     {
+        printf("невозможное время");
+     }
+    return 0;
  }
- else if (((hours >= 6) && (hours < 12)) && ((minutes >= 0) && (minutes < 60)))
+ else
  {
-  printf("Доброе утро");
+     printf("невозможное время");
  }
- else if (((hours >= 12) && (hours < 18)) && ((minutes >= 0) && (minutes < 60)))
- {
-  printf("Добрый день");
- }
- else if (((hours >= 18) && (hours < 24)) && ((minutes >= 0) && (minutes < 60)))
- {
-  printf("добрый вечер");
- }
- return 0;
+}
+bool check_minutes(double minutes)
+{
+    return ((minutes >= 0) && (minutes< 60));
 }
 double input(void)
 {
