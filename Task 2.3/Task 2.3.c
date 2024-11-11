@@ -23,8 +23,12 @@ int main()
  int hours = input();
   puts("сколько минут\n");
  int minutes = input();
- if (check_minutes(minutes))
- {
+ if (!check_minutes(minutes))
+    {
+         return 1;
+    }
+else
+{
     if (((hours >= 0) && (hours < 6)))
 
      {
@@ -44,13 +48,9 @@ int main()
      }
      else 
      {
-        printf("невозможное время");
+        return 1;
      }
     return 0;
- }
- else
- {
-     printf("невозможное время");
  }
 }
 bool check_minutes(double minutes)
