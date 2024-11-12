@@ -44,12 +44,6 @@ double get_double(void);
 double get_epsilon(void);
 
 /**
-*@brief Проверка на то, что 0<е<1.
-*@param epsilone - число e
-*/
-void check_epsilon(const double epsilon);
-
-/**
 * @brief Считает сумму членов последоватльности
 * @param epsilone - число e
 * @return возращает сумму членов последовательности
@@ -121,14 +115,6 @@ double get_epsilon(void)
 	};
 	return epsilon;
 }
-void check_epsilon(const double epsilon) 
-{
-	if (epsilon >= 1 && epsilon <= 0) 
-	{
-		puts("Невозможное значение e");
-		exit(EXIT_FAILURE);
-	}
-}
 double get_double(void) 
 {
 	double value = 0.0;
@@ -143,11 +129,11 @@ double get_double(void)
 double get_sum_epsilon(const double epsilon) 
 {
 	double current = -1 / 6.0;
-	double summ = current;
-	for (int i = 1; i < epsilon + DBL_EPSILON; ++i) 
+	double summ = 0;
+	for (int i = 1; fsbs(current) < epsilon + DBL_EPSILON; ++i) 
 	{
-		current *= get_reccurent(i);
 		summ += current;
+		current *= get_reccurent(i);
 	}
 	return summ;
 }
