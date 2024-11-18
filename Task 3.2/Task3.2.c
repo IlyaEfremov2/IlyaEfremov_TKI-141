@@ -15,7 +15,7 @@ int get_int(void);
 *@brief Проверка введенных значений на то, что они больше 0.
 *@return Возвращает значение, если выполнено успешно, или ошибку, если иначе
 */
-int get_negative_int(void);
+int get_positive_int(void);
 
 /**
 *@brief считает сумму последовательности.
@@ -78,7 +78,7 @@ int get_int(void)
 	return value;
 }
 
-int get_negative_int(void) 
+int get_positive_int(void) 
 {
 	int value = get_int();
 	if (value <= 0) 
@@ -130,7 +130,7 @@ double get_sum_epsilon(const double epsilon)
 {
 	double current = -1 / 6.0;
 	double summ = 0;
-	for (int i = 1; fsbs(current) < epsilon + DBL_EPSILON; ++i) 
+	for (int i = 1; fabs(current) >= epsilon - DBL_EPSILON; ++i) 
 	{
 		summ += current;
 		current *= get_reccurent(i);
