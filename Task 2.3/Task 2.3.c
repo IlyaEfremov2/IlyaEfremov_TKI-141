@@ -11,7 +11,12 @@
 */
 double input(void);
 
-bool check_minutes(double minutes);
+/**
+* @brief Проверяет минуты на возможное значение
+* @param minutes - количество минут
+* @return Возвращает 1 если допустимое значение, или 0 если не допустимое значене.
+*/
+bool check_minutes(const double minutes);
 
 /**
 * @brief Точка входа в програsмму
