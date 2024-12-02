@@ -52,7 +52,7 @@ size_t get_above_zero_value(void);
 * @brief Функция выполнения задания 1
 * @param arr - массив, задаваемый пользователем
 * @param size_array - размер массива
-* @return Возвращает сумму чисел согласно условию
+* @return Возвращает сумму чисел, модуль которых меньше 10
 */
 int task1(const int* arr, const size_t size_array);
 
@@ -112,6 +112,11 @@ enum Task
 	fill_input = 2,
 };
 
+/**
+* @brief Функция проверки третьего элемента масива
+* @param size_array - длина масива 
+* @remarks при непрохождении проверки возвращает код ошибки /c EXIT_FAILURE
+*/
 void check_third_element(const size_t size_array);
 
 /**
