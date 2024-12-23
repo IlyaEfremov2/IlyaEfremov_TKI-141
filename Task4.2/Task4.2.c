@@ -242,15 +242,18 @@ void task1(int* arr, const size_t size_array)
     int min = -1; 
     for (size_t i = 0; i < size_array; i++) 
     { 
-        if ((arr[i] < (min == -1 ? INT_MAX : arr[min])) && (arr[i] > 0)) 
+        if (arr[i] > 0) 
         { 
-            min = i; 
-        } 
+            if (min == -1 || arr[i] < arr[min]) 
+            { 
+                min = i; 
+            } 
+        }
     } 
 
     if (min != -1) 
     {
-        arr[min] = 0;
+        arr[min] = 0; 
     }
 }
 
