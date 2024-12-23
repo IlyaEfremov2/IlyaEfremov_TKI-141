@@ -7,6 +7,16 @@
 #include <locale.h>
 
 /**
+* @brief Функция выбора метода заполнения массива пользователем
+* @param command - переменная для выбора метода заполнения массива
+* @param array - массив, задаваемый пользователем
+* @param low_value - начало массива
+* @param size_array - размер массива
+* @remarks при неправильном вводе команды выводит ошибку
+*/
+void fill_array(const int command, int* array, const int low_value, const int high_value, const size_t size_array);
+
+/**
 * @brief Функция заполнения массива интервалом, который задал пользователь
 * @param array - массив, задаваемый пользователем
 * @param size_array - размер массива
@@ -134,12 +144,11 @@ int main(void)
 	int command = input();
 	puts("Введите размер массива");
 	size_t size_array = get_above_zero_value();
-	puts("Введите меньшее значение масива:");
-	int low_value = input();
-	puts("Введите большее значение масива:");
-	int high_value = input();
+	puts("Введите меньшее и большее значение массива:");
+	int low_value = input(), high_value = input();
 	check_interval(low_value, high_value);
 	int* arr = create_array(size_array);
+	fill_array(command, arr, low_value, high_value, size_array);
 	puts("Массив:");
 	print_array(arr, size_array);
 	size_t task2_size = get_new_size(arr, size_array);
@@ -228,17 +237,21 @@ void print_array(const int* array, const size_t size_array) {
 	puts("]");
 }
 
-void task1(int* arr, const size_t size_array)
-{
-	int min = 0;
-	for (size_t i = 0; i < size_array; i++)
-	{
-		if ((arr[i] < arr[min]) && (arr[i] > 0))
-		{
-			min = i;
-		}
-	}
-	arr[min] = 0;
+void task1(int* arr, const size_t size_array) 
+{ 
+    int min = -1; 
+    for (size_t i = 0; i < size_array; i++) 
+    { 
+        if ((arr[i] < (min == -1 ? INT_MAX : arr[min])) && (arr[i] > 0)) 
+        { 
+            min = i; 
+        } 
+    } 
+
+    if (min != -1) 
+    {
+        arr[min] = 0;
+    }
 }
 
 size_t get_new_size(const int* arr, const size_t size_array)
@@ -304,5 +317,18 @@ void task3(int* arr, const size_t size_array)
 		{
 			arr[i] = -pow(arr[i], 2);
 		}
+	}
+}
+void fill_array(const int command, int* array, const int low_value, const int high_value, const size_t size_array) {
+	switch ((enum Task)command) {
+	case fill_random:
+		fill_by_random(array, low_value, high_value, size_array);
+		break;
+	case fill_input:
+		fill_by_input(array, size_array);
+		break;
+	default:
+		puts("Ошибка команды");
+		exit(EXIT_FAILURE);
 	}
 }
